@@ -1,0 +1,79 @@
+#!/bin/bash
+
+for i in {1..99}; do
+    if [ $((i % 2)) != 0 ] ;
+    then
+        echo "$i"
+    fi
+done
+------------------------------
+read -p "Enter your name: " name
+echo "Welcome $name"
+------------------------------
+for i in {1..50}; do
+    echo "$i"
+done
+------------------------------
+read -p "First Integer: " x
+read -p "Secong Integer: " y
+echo $(( x + $y ))
+echo $(( x - y ))
+echo $(( x * y ))
+echo $(( x / y ))
+------------------------------
+#!/bin/bash
+read -p "Enter your name: " x
+read -p "Enter your name: " y
+
+if [[ $x -gt $y ]]
+then
+    echo 'X is greater than Y'
+elif [[ $x -lt $y ]]
+then
+    echo "X is less than Y"
+else
+    echo "X is equal to Y"
+fi
+-----------------------------
+read -p "Enter your name: " input
+
+if [[ $input == "y" ]] || [[ $input == "Y" ]] 
+then
+    echo "YES"
+elif [[ $input == "n" ]] || [[ $input == "N" ]] 
+then
+    echo "NO"
+fi
+------------------------------
+read -p "One side" x
+read -p "Two side" y
+read -p "Three side" z
+
+if [[ $x -eq $y && $y -eq $z ]]; then
+    echo "EQUILATERAL"
+elif [[ $x -eq $y || $x -eq $z || $y -eq $z ]]; then
+    echo "ISOSCELES"
+else
+    echo "SCALENE"
+fi
+------------------------------
+# Read the input expression
+read -p "Enter a mathematical expression: " expr
+
+result=$(awk "BEGIN { print $expr }")
+
+# Round to 3 decimal places (print with printf)
+printf "%.3f\n" "$result"
+-------------------------------
+#floating numbders
+readarray -t arr
+arrLength="${arr[0]}"
+sum=0
+#echo $arrLength
+
+for (( i = 1; i <= arrLength; i++ )); do
+    sum=$(awk "BEGIN {print $sum + ${arr[i]}}")
+    #echo $sum
+done
+
+awk "BEGIN { printf \"%.3f\n\", $sum / $arrLength }"
