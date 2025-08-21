@@ -1,0 +1,194 @@
+import os.path
+import pkgutil
+import shutil
+import sys
+import struct
+import tempfile
+from fabric.api import *
+import random
+import modern
+from modern import *
+import time
+import boto3
+import os
+
+===================================================================
+
+import os.path
+Utilities for manipulating filesystem paths.
+
+os.path.join(path, *paths) – Combine parts of a file path safely.
+
+os.path.exists(path) – Check if a path exists.
+
+os.path.isfile(path) – Check if path is a file.
+
+os.path.isdir(path) – Check if path is a directory.
+
+os.path.basename(path) – Get the file name from a path.
+
+os.path.dirname(path) – Get the directory name from a path.
+
+os.path.abspath(path) – Get the absolute version of a path.
+
+os.path.splitext(path) – Split filename and extension.
+
+2. import pkgutil
+Inspect and work with Python packages.
+
+pkgutil.iter_modules(path=None) – List available modules in a package.
+
+pkgutil.get_data(package, resource) – Get resource file data from a package.
+
+pkgutil.walk_packages(path=None) – Recursively find all submodules.
+
+3. import shutil
+High-level file and directory operations.
+
+shutil.copy(src, dst) – Copy a file.
+
+shutil.copytree(src, dst) – Recursively copy a directory.
+
+shutil.move(src, dst) – Move or rename files/directories.
+
+shutil.rmtree(path) – Delete an entire directory tree.
+
+shutil.disk_usage(path) – Get total, used, free space.
+
+shutil.make_archive(base_name, format, root_dir) – Create archive (.zip, .tar, etc.).
+
+4. import sys
+Access Python runtime environment.
+
+sys.argv – Command-line arguments list.
+
+sys.exit([status]) – Exit the program.
+
+sys.path – List of paths Python searches for modules.
+
+sys.version – Python version string.
+
+sys.stdout.write() – Write to stdout without newline.
+
+5. import struct
+Convert between Python values and C structs (binary data).
+
+struct.pack(fmt, v1, v2, …) – Pack values into a byte string.
+
+struct.unpack(fmt, buffer) – Unpack values from bytes.
+
+struct.calcsize(fmt) – Get size of a structure.
+
+6. import tempfile
+Create temporary files and directories.
+
+tempfile.NamedTemporaryFile() – Create a temp file with a name.
+
+tempfile.TemporaryFile() – Create an unnamed temp file.
+
+tempfile.TemporaryDirectory() – Context manager for temp dir.
+
+tempfile.gettempdir() – Get system temp dir path.
+
+7. from fabric.api import *
+Fabric = SSH-based deployment automation.
+
+run(cmd) – Run a shell command on a remote host.
+
+local(cmd) – Run a shell command locally.
+
+put(local_path, remote_path) – Upload files to remote.
+
+get(remote_path, local_path) – Download files from remote.
+
+sudo(cmd) – Run a command with sudo on remote.
+
+env.hosts – List of remote hosts.
+
+env.user – SSH user name.
+
+8. import random
+Generate pseudo-random numbers.
+
+random.randint(a, b) – Random int between a and b inclusive.
+
+random.choice(seq) – Random element from a sequence.
+
+random.shuffle(seq) – Shuffle a list in place.
+
+random.random() – Float between 0 and 1.
+
+random.sample(population, k) – k unique random elements.
+
+9. import modern / from modern import *
+This depends on the modern library installed.
+If you mean the modern package from PyPI, it’s often used for modernization helpers (e.g., text, style, formats). Common usage varies — we’d need to confirm which modern library you have.
+
+10. import time
+Time access and conversions.
+
+time.sleep(seconds) – Pause execution.
+
+time.time() – Current time in seconds since epoch.
+
+time.strftime(fmt, t) – Format time.
+
+time.localtime([secs]) – Convert seconds to local time struct.
+
+time.gmtime([secs]) – Convert seconds to UTC time struct.
+
+11. import boto3
+AWS SDK for Python.
+
+boto3.client(service_name) – Create low-level AWS service client.
+
+boto3.resource(service_name) – Create high-level AWS service resource.
+
+client.list_buckets() – S3: List buckets.
+
+client.upload_file(Filename, Bucket, Key) – S3: Upload file.
+
+client.get_item(TableName, Key) – DynamoDB: Get item.
+
+client.invoke(FunctionName, Payload) – Lambda: Invoke function.
+
+12. import os
+Operating system interface.
+
+os.listdir(path) – List files in directory.
+
+os.mkdir(path) – Create directory.
+
+os.makedirs(path) – Create dirs recursively.
+
+os.remove(path) – Delete file.
+
+os.rmdir(path) – Remove directory.
+
+os.environ – Dict of environment variables.
+
+os.getcwd() – Current working directory.
+
+
+
+
+
+
+
+
+=============================
+Python 3 is a major, intentionally backwards-incompatible release of the Python programming language, designed to address design flaws and improve consistency compared to Python 2. Key differences include:
+print statement vs. print() function:
+In Python 2, print was a statement, while in Python 3, it became a built-in function requiring parentheses, e.g., print("Hello").
+Integer Division:
+Python 2's integer division (e.g., 5 / 2) resulted in an integer (e.g., 2), while Python 3 performs true division, yielding a float (e.g., 2.5). To get integer division in Python 3, the // operator is used.
+Unicode Support:
+Python 3 handles all strings as Unicode by default, simplifying internationalization and text processing. Python 2 had separate str (for ASCII) and unicode types, which often led to encoding issues.
+range() vs. xrange():
+In Python 2, range() returned a list, while xrange() returned an iterator. In Python 3, range() now behaves like Python 2's xrange(), returning an iterable object to save memory, especially for large ranges. 
+Exception Handling:
+The syntax for catching exceptions changed. In Python 2, except Exception, e: was used, while Python 3 uses except Exception as e:.
+Standard Library Changes:
+Numerous modules and functions in the standard library were reorganized or renamed for better consistency and functionality in Python 3.
+Community and Support:
+Python 3 is actively developed and supported, with a larger and growing community. Python 2 reached its end-of-life in 2020 and no longer receives official support or updates.	
